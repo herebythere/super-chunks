@@ -1,0 +1,23 @@
+{
+  "service_name": "cache_store",
+  "config": {
+    "filepath": "/usr/local/config/config.json",
+    "filepath_test": "/usr/local/config/config.json.example"
+  },
+  "server": {
+    "http_port": 3000,
+    "idle_timeout": 5,
+    "read_timeout": 5,
+    "write_timeout": 10
+  },
+  "cache": {
+    "host": "127.0.0.1",
+    "idle_timeout": 1,
+    "max_active": 1024,
+    "max_idle": 128,
+    "max_samples": 5,
+    "max_size_in_mb": "64mb",
+    "protocol": "tcp",
+    "port": 6379
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "service_name": "reverse_proxy",
+    "config": {
+    "filepath": "/usr/local/config/config.json",
+    "filepath_test": "/usr/local/config/config.json.example"
+  },
+  "server": {
+    "http_port": 80,
+    "https_port": 443,
+    "idle_timeout": 5,
+    "read_timeout": 5,
+    "redirect_from_http_to_https": true,
+    "skip_ssl_verification_on_forwards": true,
+    "write_timeout": 10
+  },
+  "cert_paths": {
+    "cert": "/usr/local/config/fullchain.pem",
+    "private_key": "/usr/local/config/privkey.pem"
+  },
+  "routes": {
+    "https://superawesome.com": "https://127.0.0.1:5000",
+    "https://www.superawesome.com": "https://127.0.0.1:5001",
+    "https://really.superawesome.com": "https://127.0.0.1:5002"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "service_name": "superdb",
+  "config": {
+    "filepath": "/usr/local/config/config.json",
+    "filepath_test": "/usr/local/config/config.json.example"
+  },
+  "server": {
+    "http_port": 3010,
+    "idle_timeout": 5,
+    "read_timeout": 5,
+    "write_timeout": 10
+  },
+  "db": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "database_name": "superdb",
+    "username": "user",
+    "password": "password"
+  }
+}

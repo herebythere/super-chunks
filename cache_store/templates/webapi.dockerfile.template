@@ -1,0 +1,11 @@
+FROM alpine:latest
+
+RUN apk --update add --no-cache build-base git go
+
+RUN go get github.com/gomodule/redigo/
+
+VOLUME [ "/usr/lib/go/src/webapi/", "/usr/local/config/" ]
+
+WORKDIR /usr/lib/go/src/webapi/
+
+EXPOSE ${http_port}

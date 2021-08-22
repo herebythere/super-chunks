@@ -1,0 +1,21 @@
+version: "3"
+services:
+  webapi:
+    container_name: ${service_name}_${http_port}
+    build:
+      context: ./webapi/
+      dockerfile: dockerfile
+    restart: always
+    ports:
+      - "${http_port}:${http_port}"
+    volumes:
+      - ./config/:/usr/local/config/
+      - ./content/:/usr/local/content/
+      - ./webapi/:/usr/lib/go/src/webapi/
+    environment:
+      - FILESERVER_FILEPATH=${fileserver_filepath}
+      - NOT_FOUND_FILEPATH=${not_found_filepath}
+      - BAD_REQUEST_FILEPATH=${bad_request_filepath}
+      - CONFIG_FILEPATH=${config_filepath}
+      - CONFIG_FILEPATH_TEST=${config_filepath_test}
+    command: "go run /usr/lib/go/src/webapi/main.go"

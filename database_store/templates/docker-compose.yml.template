@@ -1,0 +1,32 @@
+version: "3"
+services:
+  db:
+    container_name: ${service_name}_${http_port}_db
+    build:
+      context: ./store/
+      dockerfile: dockerfile
+    restart: always
+    volumes:
+      - ./store/data/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=${username}
+      - POSTGRES_PASSWORD=${password}
+      - POSTGRES_DB=${database_name}
+    command: "-p ${db_port}"
+  webapi:
+    depends_on:
+      - ${service_name}_${http_port}_db
+    container_name: ${service_name}_${http_port}
+    build:
+      context: ./webapi/
+      dockerfile: dockerfile
+    restart: always
+    ports:
+      - "${http_port}:${http_port}"
+    volumes:
+      - ./config/:/usr/local/config/
+      - ./webapi/:/usr/lib/go/src/webapi/
+    environment:
+      - CONFIG_FILEPATH=${filepath}
+      - CONFIG_FILEPATH_TEST=${filepath_test}
+    command: go run /usr/lib/go/src/webapi/main.go

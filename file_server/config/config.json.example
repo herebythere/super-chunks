@@ -1,0 +1,18 @@
+{
+  "service_name": "file_server",
+  "config": {
+    "filepath": "/usr/local/config/config.json",
+    "filepath_test": "/usr/local/config/config.json.example"
+  },
+  "fileserver": {
+     "filepath": "/usr/local/content/",
+     "bad_request": "/usr/local/content/400.html",
+     "not_found": "/usr/local/content/404.html"
+  },
+  "server": {
+    "http_port": 3020,
+    "idle_timeout": 3,
+    "read_timeout": 3,
+    "write_timeout": 5
+  }
+}
